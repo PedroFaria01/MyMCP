@@ -108,6 +108,19 @@ Ferramentas expostas:
 - `remover_nota` — remove uma nota pelo ID. Chama sem `confirmar` primeiro
   pra ver uma prévia sem apagar nada; só remove de fato com
   `confirmar: true`.
+- `buscar_semantico` — busca por similaridade de vocabulário (TF-IDF +
+  cosseno, calculado localmente, sem IA/nuvem), pra achar notas do mesmo
+  assunto mesmo sem a frase exata em comum. Complementa `buscar_contexto`.
+- `historico_nota` — reconstrói como uma nota mudou ao longo do tempo, a
+  partir dos backups automáticos em `data/backups/` (até 5 versões).
+- `contexto_projeto` — empacota as notas de um tema/projeto (+ as ligadas
+  por `[[Nome]]` que ficam fora dele) num bloco de texto único, pronto pra
+  colar como contexto em outra sessão/agente.
+- `listar_pendencias` — varre o conteúdo procurando `- [ ] algo` ou
+  `TODO: algo` e devolve os itens em aberto com a nota de origem; aceita
+  `tema` pra restringir (ex: `"agenda"`).
+- `sugerir_organizacao` — aponta notas sem tema, temas quase vazios e
+  pares de temas com nome parecido (possível duplicata por digitação).
 
 Um caminho de tema que não existe (nas ferramentas que só leem, não criam)
 retorna um aviso pedindo pra chamar `listar_temas` primeiro, em vez de

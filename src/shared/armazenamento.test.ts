@@ -178,3 +178,28 @@ describe('backup automático', () => {
     expect(arquivos.length).toBeGreaterThan(0);
   });
 });
+
+describe('historicoDaNota', () => {
+  it('nota nunca escrita de novo (sem backup contendo ela) devolve só o estado atual', () => {
+    const nota = A.adicionarNota({ titulo: 'Única', conteudo: 'x' });
+    const historico = A.historicoDaNota(nota.id);
+    expect(historico).toHaveLength(1);
+    expect(historico[0].titulo).toBe('Única');
+  });
+
+  it('reconstrói versões anteriores a partir dos backups, terminando no estado atual', () => {
+    const nota = A.adicionarNota({ titulo: 'V1', conteudo: 'primeira versão' });
+    A.atualizarNota(nota.id, { conteudo: 'segunda versão' });
+    A.atualizarNota(nota.id, { conteudo: 'terceira versão' });
+
+    const historico = A.historicoDaNota(nota.id);
+
+    expect(historico.length).toBeGreaterThanOrEqual(2);
+    expect(historico[historico.length - 1].conteudo).toBe('terceira versão');
+    expect(historico.some((v) => v.conteudo === 'primeira versão')).toBe(true);
+  });
+
+  it('nota inexistente devolve lista vazia', () => {
+    expect(A.historicoDaNota('nao-existe')).toEqual([]);
+  });
+});

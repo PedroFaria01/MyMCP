@@ -22,6 +22,7 @@ import {
   removerTema,
   resolverCaminhoDeTema,
   acharTemaPorCaminho,
+  historicoDaNota,
 } from '../src/shared/armazenamento.js';
 import { montarArvore, notasDoTema, caminhoDoTema } from '../src/shared/temas.js';
 import { normalizar } from '../src/shared/texto.js';
@@ -33,6 +34,12 @@ import {
   descreverImpactoDeRemocao,
   mensagemPreviaRemocaoDeTema,
   mensagemPreviaRemocaoDeNota,
+  buscarSemanticamente,
+  montarContextoDeProjeto,
+  extrairPendencias,
+  notasSemTema,
+  temasQuaseVazios,
+  temasParecidos,
 } from './logica.js';
 
 const server = new McpServer({
@@ -272,6 +279,116 @@ server.tool(
 
     removerNota(id);
     return { content: [{ type: 'text', text: `Nota "${nota.titulo}" removida.` }] };
+  },
+);
+
+// ------------------------------------------------------------------------
+// Ferramentas novas
+// ------------------------------------------------------------------------
+
+server.tool(
+  'buscar_semantico',
+  'Busca notas por similaridade de vocabulário (TF-IDF + cosseno, calculado localmente — não é IA/embeddings de rede neural, não depende de internet). Complementa buscar_contexto: acha notas que falam do mesmo assunto com outras palavras, mesmo sem a frase exata em comum. Use quando buscar_contexto não achar nada, ou quando quiser notas "parecidas" com uma descrição livre.',
+  {
+    consulta: z.string().describe('Descrição livre do assunto, ex: "problema de dinheiro no cartão"'),
+    tema: z.string().optional().describe('Caminho do tema pra restringir a busca, ex: "Financas"'),
+    limite: z.number().int().positive().optional().describe('Máximo de resultados (padrão 10)'),
+  },
+  async ({ consulta, tema, limite }) => {
+    let notas = lerTodasAsNotas();
+    if (tema) {
+      const encontrado = acharTemaPorCaminho(tema);
+      if (!encontrado) return { content: [{ type: 'text', text: ERRO_TEMA_NAO_ENCONTRADO(tema) }] };
+      const idsDoTema = new Set(notasDoTema(notas, listarTemas(), encontrado.id).map((n) => n.id));
+      notas = notas.filter((n) => idsDoTema.has(n.id));
+    }
+
+    const resultados = buscarSemanticamente(notas, consulta, limite ?? 10).map((r) => ({
+      ...r.nota,
+      similaridade: Number(r.pontuacao.toFixed(3)),
+    }));
+    return { content: [{ type: 'text', text: JSON.stringify(resultados, null, 2) }] };
+  },
+);
+
+server.tool(
+  'historico_nota',
+  'Mostra como uma nota mudou ao longo do tempo, reconstruído a partir dos backups automáticos (as últimas escritas em data/backups/). Útil pra responder "o que eu tinha escrito aqui antes?". Como só guarda as últimas 5 escritas do arquivo inteiro, notas mudadas há muito tempo podem não ter histórico — nesse caso devolve só o estado atual.',
+  { id: z.string().describe('ID da nota') },
+  async ({ id }) => {
+    const versoes = historicoDaNota(id);
+    if (versoes.length === 0) return { content: [{ type: 'text', text: `Nota "${id}" não encontrada.` }] };
+    return { content: [{ type: 'text', text: JSON.stringify(versoes, null, 2) }] };
+  },
+);
+
+server.tool(
+  'contexto_projeto',
+  'Empacota as notas de um tema/projeto (+ notas ligadas por [[Nome]] que ficam fora dele) num único bloco de texto formatado, pronto pra colar como contexto em outra sessão ou agente de IA — um "handoff" rápido sem precisar chamar listar_notas e notas_relacionadas nota por nota.',
+  { tema: z.string().describe('Caminho do tema/projeto, ex: "Projetos/Hub Pessoal"') },
+  async ({ tema }) => {
+    const encontrado = acharTemaPorCaminho(tema);
+    if (!encontrado) return { content: [{ type: 'text', text: ERRO_TEMA_NAO_ENCONTRADO(tema) }] };
+
+    const todasNotas = lerTodasAsNotas();
+    const doProjeto = notasDoTema(todasNotas, listarTemas(), encontrado.id);
+    const idsDoProjeto = new Set(doProjeto.map((n) => n.id));
+
+    const relacionadasDeFora = new Map<string, (typeof todasNotas)[number]>();
+    for (const nota of doProjeto) {
+      const { paraFora, paraDentro } = notasRelacionadas(nota.id);
+      for (const relacionada of [...paraFora, ...paraDentro]) {
+        if (!idsDoProjeto.has(relacionada.id)) relacionadasDeFora.set(relacionada.id, relacionada);
+      }
+    }
+
+    const texto = montarContextoDeProjeto(tema, doProjeto, [...relacionadasDeFora.values()]);
+    return { content: [{ type: 'text', text: texto }] };
+  },
+);
+
+server.tool(
+  'listar_pendencias',
+  'Varre o conteúdo das notas procurando itens em aberto — linhas "- [ ] algo" ou "TODO: algo" — e devolve uma lista com a nota de origem. Itens já marcados "- [x]" não entram. Use `tema` (ex: "agenda") pra restringir a um assunto.',
+  { tema: z.string().optional().describe('Caminho do tema pra restringir, ex: "agenda"') },
+  async ({ tema }) => {
+    let notas = lerTodasAsNotas();
+    if (tema) {
+      const encontrado = acharTemaPorCaminho(tema);
+      if (!encontrado) return { content: [{ type: 'text', text: ERRO_TEMA_NAO_ENCONTRADO(tema) }] };
+      notas = notasDoTema(notas, listarTemas(), encontrado.id);
+    }
+
+    const pendencias = notas.flatMap((nota) =>
+      extrairPendencias(nota.conteudo).map((texto) => ({ notaId: nota.id, notaTitulo: nota.titulo, pendencia: texto })),
+    );
+    return { content: [{ type: 'text', text: JSON.stringify(pendencias, null, 2) }] };
+  },
+);
+
+server.tool(
+  'sugerir_organizacao',
+  'Analisa a árvore de temas e as notas em busca de bagunça acumulada: notas sem tema, temas/subtemas quase vazios (0 ou 1 nota) e pares de temas com nome parecido (possível duplicata por digitação, ex: "Financas" e "Finanças" cadastrados separados). Não muda nada sozinho — só aponta o que vale revisar.',
+  {},
+  async () => {
+    const temas = listarTemas();
+    const notas = lerTodasAsNotas();
+
+    const semTema = notasSemTema(notas).map((n) => ({ id: n.id, titulo: n.titulo }));
+    const quaseVazios = temasQuaseVazios(temas, notas).map(({ tema, total }) => ({
+      caminho: caminhoDoTema(temas, tema.id),
+      notas: total,
+    }));
+    const duplicatas = temasParecidos(temas).map(([a, b]) => ({
+      a: caminhoDoTema(temas, a.id),
+      b: caminhoDoTema(temas, b.id),
+    }));
+
+    return {
+      content: [
+        { type: 'text', text: JSON.stringify({ notasSemTema: semTema, temasQuaseVazios: quaseVazios, possiveisDuplicatas: duplicatas }, null, 2) },
+      ],
+    };
   },
 );
 

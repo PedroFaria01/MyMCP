@@ -212,6 +212,62 @@ export function removerNota(id: string): boolean {
   return removeu;
 }
 
+export interface VersaoHistorica {
+  quando: string; // ISO date
+  titulo: string;
+  conteudo: string;
+}
+
+function timestampDoBackup(nomeArquivo: string): string {
+  const miolo = nomeArquivo.slice('notas-'.length, -'.json'.length);
+  const partes = miolo.match(/^(\d{4}-\d{2}-\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z$/);
+  if (!partes) return miolo;
+  const [, data, h, m, s, ms] = partes;
+  return `${data}T${h}:${m}:${s}.${ms}Z`;
+}
+
+/**
+ * Reconstrói o histórico de uma nota a partir dos backups automáticos
+ * (cada escrita em notas.json copia o estado anterior pra data/backups/,
+ * até 5 versões). Pula versões consecutivas idênticas e termina com o
+ * estado atual — dá pra responder "o que essa nota dizia antes?" sem
+ * precisar guardar histórico à parte.
+ */
+export function historicoDaNota(id: string): VersaoHistorica[] {
+  const pasta = pastaBackups();
+  const versoes: VersaoHistorica[] = [];
+  let ultimaChave: string | null = null;
+
+  if (existsSync(pasta)) {
+    const arquivos = readdirSync(pasta)
+      .filter((f) => f.startsWith('notas-') && f.endsWith('.json'))
+      .sort();
+    for (const arquivo of arquivos) {
+      try {
+        const bruto = JSON.parse(readFileSync(join(pasta, arquivo), 'utf-8'));
+        const nota = (bruto?.notas ?? []).find((n: any) => n.id === id);
+        if (!nota) continue;
+        const chave = `${nota.titulo} ${nota.conteudo}`;
+        if (chave === ultimaChave) continue;
+        ultimaChave = chave;
+        versoes.push({ quando: timestampDoBackup(arquivo), titulo: nota.titulo, conteudo: nota.conteudo });
+      } catch {
+        continue; // backup corrompido/parcial — ignora e segue pros outros
+      }
+    }
+  }
+
+  const atual = lerTodasAsNotas().find((n) => n.id === id);
+  if (atual) {
+    const chaveAtual = `${atual.titulo} ${atual.conteudo}`;
+    if (chaveAtual !== ultimaChave) {
+      versoes.push({ quando: atual.atualizadoEm, titulo: atual.titulo, conteudo: atual.conteudo });
+    }
+  }
+
+  return versoes;
+}
+
 // ------------------------------------------------------------------------
 // Temas (pastas hierárquicas: tema raiz → subtema)
 // ------------------------------------------------------------------------
