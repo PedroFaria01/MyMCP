@@ -153,3 +153,7 @@ hub-pessoal-mcp/
 | `npm run typecheck` | checa os tipos do projeto inteiro |
 | `npm test` | roda todos os testes: armazenamento/temas/migração/backup (`src/shared`), lógica do MCP (`mcp-server`) e componentes React (`src/renderer`, via Testing Library + jsdom) |
 | `npm run test:watch` | mesma coisa, em modo watch |
+
+## Licença
+
+[MIT](LICENSE).
