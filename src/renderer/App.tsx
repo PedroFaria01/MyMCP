@@ -151,6 +151,10 @@ export default function App() {
     setTemas(reordenados);
   }
 
+  function lidarComAbrirLink(url: string) {
+    window.hub.abrirLink(url);
+  }
+
   function lidarComAlternarSelecao(id: string) {
     setNotasSelecionadas((atual) => {
       const novo = new Set(atual);
@@ -308,6 +312,7 @@ export default function App() {
           aoRemover={lidarComRemocao}
           aoSelecionarNota={setNotaSelecionadaId}
           aoResolverLinks={resolverIdsDeLinks}
+          aoAbrirLink={lidarComAbrirLink}
         />
       )}
     </div>

@@ -56,56 +56,56 @@
     {
       "id": "3e713c6d-58f0-4e08-8212-e9177b121ce0",
       "titulo": "PedroFaria-CV",
-      "conteudo": "Site pessoal de currículo/portfólio, publicado no GitHub Pages.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- vanilla-cookieconsent\n\nRepositório: https://github.com/PedroFaria01/PedroFaria-CV\nDeploy: https://pedrofaria01.github.io/PedroFaria-CV/",
+      "conteudo": "Site pessoal de currículo/portfólio, publicado no GitHub Pages.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- vanilla-cookieconsent\n\nRepositório: https://github.com/PedroFaria01/PedroFaria-CV\nDeploy: https://pedrofaria01.github.io/PedroFaria-CV/\n\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "d5a60f2e-09f7-43c1-92bd-d3643d90dfa8",
       "links": [],
       "criadoEm": "2026-09-15T13:07:58.222Z",
-      "atualizadoEm": "2026-09-15T13:07:58.222Z"
+      "atualizadoEm": "2026-09-15T14:52:36.570Z"
     },
     {
       "id": "3fe7f754-6bbb-4cec-bc56-22d4eb511c68",
       "titulo": "cv-builder",
-      "conteudo": "Plataforma multi-usuário de criação de currículo, com editor drag-and-drop.\n\nStack:\n- React 19\n- Vite\n- Firebase (Auth, Firestore, Storage)\n- react-router-dom\n- @dnd-kit (drag-and-drop)\n- GSAP\n- rsuite (UI)\n- Playwright (testes e2e)\n\nRepositório: https://github.com/PedroFaria01/cv-builder\nDeploy: https://curriculos-online.web.app/",
+      "conteudo": "Plataforma multi-usuário de criação de currículo, com editor drag-and-drop.\n\nStack:\n- React 19\n- Vite\n- Firebase (Auth, Firestore, Storage)\n- react-router-dom\n- @dnd-kit (drag-and-drop)\n- GSAP\n- rsuite (UI)\n- Playwright (testes e2e)\n\nRepositório: https://github.com/PedroFaria01/cv-builder\nDeploy: https://curriculos-online.web.app/\n\nSetup: precisa de config do Firebase (chaves do projeto) pra rodar local — ver .env/firebaseConfig no repo.\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "be56cd34-98a8-4c2d-80e5-b509c2bf6a27",
       "links": [],
       "criadoEm": "2026-09-15T13:07:58.223Z",
-      "atualizadoEm": "2026-09-15T13:07:58.223Z"
+      "atualizadoEm": "2026-09-15T14:52:36.573Z"
     },
     {
       "id": "888f03c5-4ef9-4f4c-9b6e-81e3cc8a16b9",
       "titulo": "crimson-painting-store",
-      "conteudo": "Protótipo de e-commerce de miniaturas de D&D (preços em EUR, interface em inglês).\n\nStack:\n- React 18\n- Vite\n- Tailwind CSS\n- Supabase (Postgres + Auth)\n- react-router-dom\n\nRepositório: https://github.com/PedroFaria01/crimson-painting-store",
+      "conteudo": "Protótipo de e-commerce de miniaturas de D&D (preços em EUR, interface em inglês).\n\nStack:\n- React 18\n- Vite\n- Tailwind CSS\n- Supabase (Postgres + Auth)\n- react-router-dom\n\nRepositório: https://github.com/PedroFaria01/crimson-painting-store\n\nSetup: precisa de SUPABASE_URL + SUPABASE_ANON_KEY (ou nomes equivalentes) pra rodar local.\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "3d1104bd-1cb3-460a-9b58-0190c3baf71f",
       "links": [],
       "criadoEm": "2026-09-15T13:07:58.225Z",
-      "atualizadoEm": "2026-09-15T13:07:58.225Z"
+      "atualizadoEm": "2026-09-15T14:52:36.575Z"
     },
     {
       "id": "51b9741e-87e2-4ea0-8497-676720c6d4ba",
       "titulo": "Everything Box",
-      "conteudo": "Ferramenta desktop (\"Caixa de Tudo\") com IA local que ajuda em tarefas do dia a dia de trabalho — tem também uma versão mobile.\n\nStack:\n- Desktop: Electron + React 18 + TypeScript + Zustand + HeroUI + Tailwind + electron-builder\n- Documentos: docx, mammoth, pdf-parse\n- Automação de SO: @nut-tree-fork/nut-js, uiohook-napi\n- Mobile: Capacitor + React + Vite + TypeScript (Android)\n\nRepositório: https://github.com/PedroFaria01/Everything-Box",
+      "conteudo": "Ferramenta desktop (\"Caixa de Tudo\") com IA local que ajuda em tarefas do dia a dia de trabalho — tem também uma versão mobile.\n\nStack:\n- Desktop: Electron + React 18 + TypeScript + Zustand + HeroUI + Tailwind + electron-builder\n- Documentos: docx, mammoth, pdf-parse\n- Automação de SO: @nut-tree-fork/nut-js, uiohook-napi\n- Mobile: Capacitor + React + Vite + TypeScript (Android)\n\nRepositório: https://github.com/PedroFaria01/Everything-Box\n\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "56ad4226-9eda-4fb8-afa1-40e32ae763ab",
       "links": [],
       "criadoEm": "2026-09-15T13:07:58.226Z",
-      "atualizadoEm": "2026-09-15T13:07:58.226Z"
+      "atualizadoEm": "2026-09-15T14:52:36.577Z"
     },
     {
       "id": "6674d85f-13da-41d4-a5b4-f281aef161ed",
       "titulo": "JoaoFaria-CV",
-      "conteudo": "Site de currículo/portfólio (mesmo template do PedroFaria-CV), feito para João Faria.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- gh-pages (deploy)\n\nRepositório: https://github.com/PedroFaria01/JoaoFaria-CV",
+      "conteudo": "Site de currículo/portfólio (mesmo template do PedroFaria-CV), feito para João Faria.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- gh-pages (deploy)\n\nRepositório: https://github.com/PedroFaria01/JoaoFaria-CV\n\nDeploy: https://pedrofaria01.github.io/JoaoFaria-CV/\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "61cd1a30-a766-44dc-b677-ae3cfad204ef",
       "links": [],
       "criadoEm": "2026-09-15T13:07:58.227Z",
-      "atualizadoEm": "2026-09-15T13:07:58.227Z"
+      "atualizadoEm": "2026-09-15T14:52:36.579Z"
     },
     {
       "id": "c4a09722-448a-4c2a-bdd5-ddab18082b3d",
       "titulo": "InfiniteScape RPGAI",
-      "conteudo": "RPG solo e cooperativo com IA — campanhas persistentes, criação guiada de personagens e narração por IA. Suporta sistemas com dados reais (D&D 2024 em Faerûn/Eldoria, Cyberpunk 2020/Interlock) e mundos narrativos sem dados (Mundo Livre, Neon Noir, Game of Thrones), com mesas cooperativas multiplayer e campanhas semanais publicáveis (Bíblia versionada por campanha).\n\nStack:\n- Next.js (App Router) + TypeScript\n- Firebase: Auth, Firestore (persistência por usuário), Admin SDK, Hosting com Web Frameworks (SSR via Cloud Functions)\n- Anthropic API (Claude): Haiku pra ações comuns, Sonnet pra combates/testes/momentos dramáticos\n- Motor de regras em código: dice-engine (D&D 2024) e cyberpunk2020.ts (Interlock) — a IA não inventa resultado de dado\n- Fantasy Design System próprio (components/fantasy-ui), construído sobre o RPGUI\n- Playwright (e2e + regressão visual) e Firestore Emulator (testes de regras de segurança)",
+      "conteudo": "RPG solo e cooperativo com IA — campanhas persistentes, criação guiada de personagens e narração por IA. Suporta sistemas com dados reais (D&D 2024 em Faerûn/Eldoria, Cyberpunk 2020/Interlock) e mundos narrativos sem dados (Mundo Livre, Neon Noir, Game of Thrones), com mesas cooperativas multiplayer e campanhas semanais publicáveis (Bíblia versionada por campanha).\n\nStack:\n- Next.js (App Router) + TypeScript\n- Firebase: Auth, Firestore (persistência por usuário), Admin SDK, Hosting com Web Frameworks (SSR via Cloud Functions)\n- Anthropic API (Claude): Haiku pra ações comuns, Sonnet pra combates/testes/momentos dramáticos\n- Motor de regras em código: dice-engine (D&D 2024) e cyberpunk2020.ts (Interlock) — a IA não inventa resultado de dado\n- Fantasy Design System próprio (components/fantasy-ui), construído sobre o RPGUI\n- Playwright (e2e + regressão visual) e Firestore Emulator (testes de regras de segurança)\n\nRepositório: https://github.com/PedroFaria01/infinitescapeai\nCaminho local: (ainda não informado — atualizar quando souber)",
       "temaId": "ddb4ccbd-eedf-4bcc-bb94-361dbdc0e82e",
       "links": [],
       "criadoEm": "2026-09-15T13:13:00.146Z",
-      "atualizadoEm": "2026-09-15T13:13:00.146Z"
+      "atualizadoEm": "2026-09-15T14:50:29.959Z"
     },
     {
       "id": "fda35750-44a1-4639-a506-7b8ad41443d0",

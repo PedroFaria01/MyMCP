@@ -3,7 +3,7 @@
 // armazenamento — o renderer nunca toca no sistema de arquivos direto,
 // só fala com o main process através do preload.
 
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import {
@@ -68,6 +68,13 @@ ipcMain.handle('temas:adicionar', (_evento, novo: NovoTema) => adicionarTema(nov
 ipcMain.handle('temas:renomear', (_evento, id: string, nome: string) => renomearTema(id, nome));
 ipcMain.handle('temas:remover', (_evento, id: string) => removerTema(id));
 ipcMain.handle('temas:reordenar', (_evento, idsNaOrdem: string[]) => reordenarTemas(idsNaOrdem));
+
+// abre no navegador padrão do SO, nunca dentro da própria janela do Electron —
+// só http/https, pra um link malicioso dentro de uma nota não conseguir abrir
+// file:// ou outro esquema local
+ipcMain.handle('shell:abrirExterno', (_evento, url: string) => {
+  if (/^https?:\/\//i.test(url)) shell.openExternal(url);
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

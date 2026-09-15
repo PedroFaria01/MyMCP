@@ -58,4 +58,6 @@ export type ApiHub = {
   removerTema: (id: string) => Promise<boolean>;
   /** Reordena um grupo de temas irmãos (mesma raiz ou mesmo pai) pra ficar na ordem dos IDs passados */
   reordenarTemas: (idsNaOrdem: string[]) => Promise<Tema[]>;
+  /** Abre uma URL http/https no navegador padrão do SO (nunca dentro da janela do app) */
+  abrirLink: (url: string) => Promise<void>;
 };

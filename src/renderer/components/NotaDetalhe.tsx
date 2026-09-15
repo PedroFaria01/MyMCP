@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Nota, NovaNota, Tema } from '../../shared/tipos';
 import { listaAchatada } from '../../shared/temas';
-import { destacarLinks, notasRelacionadas } from '../../shared/notas';
+import { destacarLinks, destacarUrls, notasRelacionadas } from '../../shared/notas';
 import { normalizar } from '../../shared/texto';
 import { extrairTitulosLinkados, limparSintaxeDeLink } from '../utils/links';
 
@@ -15,6 +15,8 @@ interface Props {
   aoSelecionarNota: (id: string) => void;
   /** Acha (ou cria) as notas referenciadas por [[Nome]] e devolve os IDs — igual à barra de captura */
   aoResolverLinks: (titulos: string[]) => Promise<string[]>;
+  /** Abre uma URL http/https no navegador padrão do SO */
+  aoAbrirLink: (url: string) => void;
 }
 
 export default function NotaDetalhe({
@@ -26,6 +28,7 @@ export default function NotaDetalhe({
   aoRemover,
   aoSelecionarNota,
   aoResolverLinks,
+  aoAbrirLink,
 }: Props) {
   const [titulo, setTitulo] = useState(nota.titulo);
   const [conteudo, setConteudo] = useState(nota.conteudo);
@@ -167,7 +170,24 @@ export default function NotaDetalhe({
                   {segmento.texto}
                 </button>
               ) : (
-                <span key={indice}>{segmento.texto}</span>
+                destacarUrls(segmento.texto).map((trecho, subIndice) =>
+                  trecho.url ? (
+                    <a
+                      key={`${indice}-${subIndice}`}
+                      className="painel-nota__link"
+                      href={trecho.url}
+                      onClick={(evento) => {
+                        evento.preventDefault();
+                        evento.stopPropagation();
+                        aoAbrirLink(trecho.url!);
+                      }}
+                    >
+                      {trecho.texto}
+                    </a>
+                  ) : (
+                    <span key={`${indice}-${subIndice}`}>{trecho.texto}</span>
+                  ),
+                )
               ),
             )
           ) : (

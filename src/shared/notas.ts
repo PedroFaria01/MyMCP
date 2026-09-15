@@ -64,3 +64,44 @@ export function destacarLinks(conteudo: string, notasLinkadas: Pick<Nota, 'id' |
 
   return segmentos;
 }
+
+const REGEX_URL = /https?:\/\/[^\s<>"']+/g;
+
+export interface TrechoDeUrl {
+  texto: string;
+  /** Presente quando esse trecho é uma URL http/https — vira link clicável na exibição */
+  url?: string;
+}
+
+/**
+ * Quebra um trecho de texto puro (sem link pra outra nota) em pedaços,
+ * marcando URLs http/https como clicáveis. Usado nos trechos "planos" que
+ * sobram de `destacarLinks` — uma nota pode ter um link [[Nome]] e uma URL
+ * de repositório no mesmo parágrafo.
+ */
+export function destacarUrls(texto: string): TrechoDeUrl[] {
+  const trechos: TrechoDeUrl[] = [];
+  let cursor = 0;
+  const regex = new RegExp(REGEX_URL);
+  let resultado: RegExpExecArray | null;
+
+  while ((resultado = regex.exec(texto))) {
+    let url = resultado[0];
+    let fim = resultado.index + url.length;
+
+    // tira pontuação de fechamento do final — provavelmente é da frase ao
+    // redor ("veja (https://exemplo.com)." não deve incluir ")." na URL)
+    while (url.length > 0 && /[).,;:!?\]]$/.test(url)) {
+      url = url.slice(0, -1);
+      fim -= 1;
+    }
+    if (!url) continue;
+
+    if (resultado.index > cursor) trechos.push({ texto: texto.slice(cursor, resultado.index) });
+    trechos.push({ texto: url, url });
+    cursor = fim;
+  }
+
+  if (cursor < texto.length) trechos.push({ texto: texto.slice(cursor) });
+  return trechos.length > 0 ? trechos : [{ texto }];
+}

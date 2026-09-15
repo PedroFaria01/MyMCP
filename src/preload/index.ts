@@ -16,6 +16,7 @@ const api: ApiHub = {
   renomearTema: (id, nome) => ipcRenderer.invoke('temas:renomear', id, nome),
   removerTema: (id) => ipcRenderer.invoke('temas:remover', id),
   reordenarTemas: (idsNaOrdem) => ipcRenderer.invoke('temas:reordenar', idsNaOrdem),
+  abrirLink: (url) => ipcRenderer.invoke('shell:abrirExterno', url),
 };
 
 contextBridge.exposeInMainWorld('hub', api);

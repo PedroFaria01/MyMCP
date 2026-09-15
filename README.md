@@ -42,6 +42,8 @@ funcionando sem precisar digitar nada.
   já existente — nos dois casos cria a nota referenciada se ela ainda não
   existir. O `+` ao lado de "Linka para" abre um dropdown com busca pra
   linkar uma nota já existente sem precisar digitar `[[Nome]]` no texto.
+  URLs `http(s)://` soltas no conteúdo também viram link clicável, abrindo
+  no navegador padrão do sistema (nunca dentro da janela do app).
 - Botão **Selecionar** no topo da grade de notas liga um modo de seleção
   múltipla — marca várias notas e usa o seletor "Mover para…" que aparece
   pra trocar o tema de todas de uma vez.

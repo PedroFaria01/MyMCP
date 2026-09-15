@@ -25,6 +25,7 @@ function propsBase(nota: Nota, notas: Nota[] = [nota], temas: Tema[] = []) {
     aoRemover: vi.fn(),
     aoSelecionarNota: vi.fn(),
     aoResolverLinks: vi.fn(async () => [] as string[]),
+    aoAbrirLink: vi.fn(),
   };
 }
 
@@ -53,6 +54,26 @@ describe('NotaDetalhe', () => {
     fireEvent.click(screen.getByText('Hub Pessoal', { selector: '.painel-nota__link' }));
 
     expect(props.aoSelecionarNota).toHaveBeenCalledWith('2');
+    expect(screen.queryByPlaceholderText(/Escreve o conteúdo da nota/)).not.toBeInTheDocument();
+  });
+
+  it('renderiza uma URL no conteúdo como link clicável que abre externo, sem entrar em edição', () => {
+    const nota = criarNota({
+      id: '1',
+      titulo: 'A',
+      conteudo: 'Repositório: https://github.com/PedroFaria01/cv-builder aqui',
+    });
+    const props = propsBase(nota);
+
+    render(<NotaDetalhe {...props} />);
+
+    const link = screen.getByText('https://github.com/PedroFaria01/cv-builder');
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://github.com/PedroFaria01/cv-builder');
+
+    fireEvent.click(link);
+
+    expect(props.aoAbrirLink).toHaveBeenCalledWith('https://github.com/PedroFaria01/cv-builder');
     expect(screen.queryByPlaceholderText(/Escreve o conteúdo da nota/)).not.toBeInTheDocument();
   });
 

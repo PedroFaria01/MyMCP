@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { destacarLinks, notasRelacionadas } from './notas.js';
+import { destacarLinks, destacarUrls, notasRelacionadas } from './notas.js';
 import type { Nota } from './tipos.js';
 
 function criarNota(parcial: Partial<Nota> & Pick<Nota, 'id' | 'titulo'>): Nota {
@@ -55,5 +55,32 @@ describe('destacarLinks', () => {
   it('ignora caixa ao procurar, mas preserva o texto original na exibição', () => {
     const segmentos = destacarLinks('fala de HUB PESSOAL agora', [{ id: '1', titulo: 'Hub Pessoal' }]);
     expect(segmentos.find((s) => s.notaId)?.texto).toBe('HUB PESSOAL');
+  });
+});
+
+describe('destacarUrls', () => {
+  it('marca uma URL http/https no meio do texto', () => {
+    const trechos = destacarUrls('Repositório: https://github.com/PedroFaria01/cv-builder aqui');
+    expect(trechos).toEqual([
+      { texto: 'Repositório: ' },
+      { texto: 'https://github.com/PedroFaria01/cv-builder', url: 'https://github.com/PedroFaria01/cv-builder' },
+      { texto: ' aqui' },
+    ]);
+  });
+
+  it('sem URL, devolve o texto inteiro como um único trecho', () => {
+    expect(destacarUrls('texto sem link nenhum')).toEqual([{ texto: 'texto sem link nenhum' }]);
+  });
+
+  it('tira pontuação de fechamento que pertence à frase, não à URL', () => {
+    const trechos = destacarUrls('veja (https://exemplo.com/pagina).');
+    const marcado = trechos.find((t) => t.url);
+    expect(marcado?.url).toBe('https://exemplo.com/pagina');
+  });
+
+  it('marca duas URLs na mesma linha', () => {
+    const trechos = destacarUrls('Repositório: https://a.com/x\nDeploy: https://b.com/y');
+    const urls = trechos.filter((t) => t.url).map((t) => t.url);
+    expect(urls).toEqual(['https://a.com/x', 'https://b.com/y']);
   });
 });
