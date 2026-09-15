@@ -1,0 +1,206 @@
+{
+  "notas": [
+    {
+      "id": "38a88b26-192c-4a1a-b184-08bc6f73f06f",
+      "titulo": "Bem-vindo ao Hub Pessoal",
+      "conteudo": "Este é o teu grafo de contexto. Cada nota vira um ponto; cada link entre notas vira uma linha. Use a barra de captura embaixo pra adicionar algo — o grafo se atualiza sozinho.",
+      "temaId": "50729ca4-fd0b-458b-b88c-f3395da95252",
+      "links": [
+        "c5729b51-5296-4b0f-82d9-d2afa63462ad",
+        "f08eb05e-6736-40cc-ae97-45f88984bc3d"
+      ],
+      "criadoEm": "2026-09-15T09:00:00.000Z",
+      "atualizadoEm": "2026-09-15T09:00:00.000Z"
+    },
+    {
+      "id": "c5729b51-5296-4b0f-82d9-d2afa63462ad",
+      "titulo": "Como usar",
+      "conteudo": "Clica num nó do grafo pra abrir a nota. Escreve na barra de baixo e pressiona Enter pra criar uma nova. Pra linkar duas notas, escreve nome da outra nota dentro do conteúdo.  \nInfiniteScape RPGAI",
+      "temaId": "50729ca4-fd0b-458b-b88c-f3395da95252",
+      "links": [
+        "748c4678-2fe2-4a07-afbf-4788633a6560",
+        "c4a09722-448a-4c2a-bdd5-ddab18082b3d"
+      ],
+      "criadoEm": "2026-09-15T09:01:00.000Z",
+      "atualizadoEm": "2026-09-15T14:26:26.617Z"
+    },
+    {
+      "id": "748c4678-2fe2-4a07-afbf-4788633a6560",
+      "titulo": "Exemplo — Gasto do mês",
+      "conteudo": "",
+      "temaId": "580ce743-84f0-4181-8212-6d0735850d66",
+      "links": [],
+      "criadoEm": "2026-09-15T09:02:00.000Z",
+      "atualizadoEm": "2026-09-15T12:35:37.077Z"
+    },
+    {
+      "id": "efed9d82-d161-456b-a3c3-b97687bb4ac1",
+      "titulo": "Exemplo — Compromisso",
+      "conteudo": "",
+      "temaId": "66a3dc8b-0acc-491b-b118-0b752bd41b92",
+      "links": [],
+      "criadoEm": "2026-09-15T09:03:00.000Z",
+      "atualizadoEm": "2026-09-15T14:04:53.723Z"
+    },
+    {
+      "id": "f08eb05e-6736-40cc-ae97-45f88984bc3d",
+      "titulo": "Hub Pessoal MCP",
+      "conteudo": "Servidor MCP local que expõe este grafo pra qualquer assistente de IA consultar, sem depender de nuvem.",
+      "temaId": "5213d5b3-c4ac-4ad4-9ebd-87e19a699fdb",
+      "links": [
+        "38a88b26-192c-4a1a-b184-08bc6f73f06f"
+      ],
+      "criadoEm": "2026-09-15T09:04:00.000Z",
+      "atualizadoEm": "2026-09-15T13:13:30.395Z"
+    },
+    {
+      "id": "3e713c6d-58f0-4e08-8212-e9177b121ce0",
+      "titulo": "PedroFaria-CV",
+      "conteudo": "Site pessoal de currículo/portfólio, publicado no GitHub Pages.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- vanilla-cookieconsent\n\nRepositório: https://github.com/PedroFaria01/PedroFaria-CV\nDeploy: https://pedrofaria01.github.io/PedroFaria-CV/",
+      "temaId": "d5a60f2e-09f7-43c1-92bd-d3643d90dfa8",
+      "links": [],
+      "criadoEm": "2026-09-15T13:07:58.222Z",
+      "atualizadoEm": "2026-09-15T13:07:58.222Z"
+    },
+    {
+      "id": "3fe7f754-6bbb-4cec-bc56-22d4eb511c68",
+      "titulo": "cv-builder",
+      "conteudo": "Plataforma multi-usuário de criação de currículo, com editor drag-and-drop.\n\nStack:\n- React 19\n- Vite\n- Firebase (Auth, Firestore, Storage)\n- react-router-dom\n- @dnd-kit (drag-and-drop)\n- GSAP\n- rsuite (UI)\n- Playwright (testes e2e)\n\nRepositório: https://github.com/PedroFaria01/cv-builder\nDeploy: https://curriculos-online.web.app/",
+      "temaId": "be56cd34-98a8-4c2d-80e5-b509c2bf6a27",
+      "links": [],
+      "criadoEm": "2026-09-15T13:07:58.223Z",
+      "atualizadoEm": "2026-09-15T13:07:58.223Z"
+    },
+    {
+      "id": "888f03c5-4ef9-4f4c-9b6e-81e3cc8a16b9",
+      "titulo": "crimson-painting-store",
+      "conteudo": "Protótipo de e-commerce de miniaturas de D&D (preços em EUR, interface em inglês).\n\nStack:\n- React 18\n- Vite\n- Tailwind CSS\n- Supabase (Postgres + Auth)\n- react-router-dom\n\nRepositório: https://github.com/PedroFaria01/crimson-painting-store",
+      "temaId": "3d1104bd-1cb3-460a-9b58-0190c3baf71f",
+      "links": [],
+      "criadoEm": "2026-09-15T13:07:58.225Z",
+      "atualizadoEm": "2026-09-15T13:07:58.225Z"
+    },
+    {
+      "id": "51b9741e-87e2-4ea0-8497-676720c6d4ba",
+      "titulo": "Everything Box",
+      "conteudo": "Ferramenta desktop (\"Caixa de Tudo\") com IA local que ajuda em tarefas do dia a dia de trabalho — tem também uma versão mobile.\n\nStack:\n- Desktop: Electron + React 18 + TypeScript + Zustand + HeroUI + Tailwind + electron-builder\n- Documentos: docx, mammoth, pdf-parse\n- Automação de SO: @nut-tree-fork/nut-js, uiohook-napi\n- Mobile: Capacitor + React + Vite + TypeScript (Android)\n\nRepositório: https://github.com/PedroFaria01/Everything-Box",
+      "temaId": "56ad4226-9eda-4fb8-afa1-40e32ae763ab",
+      "links": [],
+      "criadoEm": "2026-09-15T13:07:58.226Z",
+      "atualizadoEm": "2026-09-15T13:07:58.226Z"
+    },
+    {
+      "id": "6674d85f-13da-41d4-a5b4-f281aef161ed",
+      "titulo": "JoaoFaria-CV",
+      "conteudo": "Site de currículo/portfólio (mesmo template do PedroFaria-CV), feito para João Faria.\n\nStack:\n- React 19\n- Vite\n- anime.js\n- dotted-map\n- gh-pages (deploy)\n\nRepositório: https://github.com/PedroFaria01/JoaoFaria-CV",
+      "temaId": "61cd1a30-a766-44dc-b677-ae3cfad204ef",
+      "links": [],
+      "criadoEm": "2026-09-15T13:07:58.227Z",
+      "atualizadoEm": "2026-09-15T13:07:58.227Z"
+    },
+    {
+      "id": "c4a09722-448a-4c2a-bdd5-ddab18082b3d",
+      "titulo": "InfiniteScape RPGAI",
+      "conteudo": "RPG solo e cooperativo com IA — campanhas persistentes, criação guiada de personagens e narração por IA. Suporta sistemas com dados reais (D&D 2024 em Faerûn/Eldoria, Cyberpunk 2020/Interlock) e mundos narrativos sem dados (Mundo Livre, Neon Noir, Game of Thrones), com mesas cooperativas multiplayer e campanhas semanais publicáveis (Bíblia versionada por campanha).\n\nStack:\n- Next.js (App Router) + TypeScript\n- Firebase: Auth, Firestore (persistência por usuário), Admin SDK, Hosting com Web Frameworks (SSR via Cloud Functions)\n- Anthropic API (Claude): Haiku pra ações comuns, Sonnet pra combates/testes/momentos dramáticos\n- Motor de regras em código: dice-engine (D&D 2024) e cyberpunk2020.ts (Interlock) — a IA não inventa resultado de dado\n- Fantasy Design System próprio (components/fantasy-ui), construído sobre o RPGUI\n- Playwright (e2e + regressão visual) e Firestore Emulator (testes de regras de segurança)",
+      "temaId": "ddb4ccbd-eedf-4bcc-bb94-361dbdc0e82e",
+      "links": [],
+      "criadoEm": "2026-09-15T13:13:00.146Z",
+      "atualizadoEm": "2026-09-15T13:13:00.146Z"
+    },
+    {
+      "id": "fda35750-44a1-4639-a506-7b8ad41443d0",
+      "titulo": "nome da outra nota",
+      "conteudo": "",
+      "temaId": null,
+      "links": [],
+      "criadoEm": "2026-09-15T14:25:05.220Z",
+      "atualizadoEm": "2026-09-15T14:25:05.220Z"
+    },
+    {
+      "id": "1d9b70c8-e9d1-4abf-8044-5320f5b9f3f1",
+      "titulo": "finanças",
+      "conteudo": "",
+      "temaId": null,
+      "links": [],
+      "criadoEm": "2026-09-15T14:25:05.227Z",
+      "atualizadoEm": "2026-09-15T14:25:05.227Z"
+    },
+    {
+      "id": "cb715221-192d-4226-8f6a-e688eb6dc6fd",
+      "titulo": "Hub Pessoal MCP — Resumo de desenvolvimento (set/2026)",
+      "conteudo": "App desktop (Electron + React + TypeScript) pra guardar notas organizadas por temas/subtemas hierárquicos (2 níveis), com links soltos entre notas ([[Nome]], estilo Obsidian) e um servidor MCP que expõe tudo isso pra qualquer IA. Tudo local, sem nuvem, armazenado em data/notas.json.\n\nNAVEGAÇÃO POR TEMAS\n- Sidebar esquerda virou uma árvore de temas/subtemas (2 níveis), substituindo a antiga lista plana de notas e o grafo canvas (removido a pedido do usuário).\n- Drag-and-drop pra reordenar temas/subtemas — arrasta pela alça (ícone ⠿), que só aparece na linha selecionada. A ordem fica salva.\n- Visão geral (sem tema selecionado) mostra um cartão por tema com contagem de notas e um resumo (notas atualizadas essa semana, tema mais ativo).\n- CRUD completo de temas: criar, renomear, remover (com prévia de impacto antes de confirmar).\n\nNOTAS\n- Painel de detalhe: conteúdo com preview clicável — trechos que viraram link (via [[Nome]]) aparecem como texto roxo clicável; clica em qualquer outro lugar pra editar.\n- [[Nome]] agora funciona tanto criando nota nova (barra de captura) quanto editando o conteúdo de uma nota já existente — nos dois casos cria a nota referenciada automaticamente se não existir.\n- \"Linka para\" / \"Linkado por\" mostram os dois lados dos links. Um × em cada chip desvincula sem apagar a nota. Um \"+\" abre um dropdown com busca pra linkar uma nota já existente direto, sem precisar digitar [[Nome]] no texto.\n- Seleção múltipla de notas (botão \"Selecionar\" na grade) + mover várias pra outro tema de uma vez.\n- Atalhos: Ctrl+K busca, Ctrl+N captura, Esc fecha o painel.\n- Busca (UI e MCP) ignora acento agora (\"financas\" acha \"Finanças\").\n\nSERVIDOR MCP — de 4 pra 10 ferramentas\nTemas: listar_temas, criar_tema, renomear_tema, remover_tema.\nNotas: buscar_contexto, listar_notas, notas_relacionadas, adicionar_nota, atualizar_nota, remover_nota.\n- buscar_contexto/listar_notas aceitam filtro por tema e \"limite\"; busca tem ranking (título pesa mais que conteúdo), resultado ordenado por recência.\n- remover_nota/remover_tema exigem confirmar:true — sem isso só mostram uma prévia do que seria afetado, pra evitar remoção acidental por um agente.\n- adicionar_nota/atualizar_nota criam tema/subtema automaticamente a partir de um caminho tipo \"Projetos/Hub Pessoal\".\n\nROBUSTEZ\n- Backup automático: toda escrita em data/notas.json copia o estado anterior pra data/backups/, mantém as 5 últimas versões.\n- 55 testes automatizados (vitest): camada de armazenamento (migração de formato antigo, CRUD, reordenação), lógica pura do servidor MCP, e componentes React (CaptureBar, NotaDetalhe, PainelTemas) com Testing Library + jsdom — inclusive um teste de drag-and-drop de verdade simulando os eventos nativos.\n\nORGANIZAÇÃO DO CÓDIGO\n- shared/temas.ts, shared/notas.ts, shared/texto.ts: funções puras reaproveitadas tanto pelo renderer quanto pelo servidor MCP (árvore de temas, relação entre notas, busca sem acento) — evita duplicar lógica.\n- mcp-server/logica.ts: lógica pura do servidor MCP extraída pra ser testável (index.ts conecta o servidor assim que é importado, o que o tornava impossível de testar direto).\n\nBUGS CORRIGIDOS NESSA RODADA\n- Ícone da seta de expandir tema desalinhado com o texto — trocado de caractere Unicode pra SVG, já que a métrica de glifo de \"⌄\"/\"›\" varia entre fontes.\n- Drag-and-drop não iniciava de forma confiável — a alça virou o elemento arrastável de verdade (draggable nela), não a linha inteira.\n- Dropdown de \"adicionar link\" estourava a tela — bug clássico de flexbox (item sem min-height:0 ignora o max-height do pai) — e abria pra baixo, o que quase sempre passava do limite da janela porque \"Linka para\" fica perto do fim do painel; agora abre pra cima.\n- Botão de fechar o dropdown fechava e reabria no mesmo clique — corrida entre o blur do campo de busca e o clique do botão, corrigida com preventDefault no mousedown.\n\nPROJETOS CATALOGADOS (tema Projetos, um subtema por repositório do GitHub, cada um com descrição + stack): PedroFaria-CV, cv-builder, crimson-painting-store, Everything Box, JoaoFaria-CV, InfiniteScape RPGAI.",
+      "temaId": "5213d5b3-c4ac-4ad4-9ebd-87e19a699fdb",
+      "links": [],
+      "criadoEm": "2026-09-15T14:40:27.246Z",
+      "atualizadoEm": "2026-09-15T14:40:27.246Z"
+    }
+  ],
+  "temas": [
+    {
+      "id": "50729ca4-fd0b-458b-b88c-f3395da95252",
+      "nome": "inicio",
+      "temaPaiId": null,
+      "criadoEm": "2026-09-15T12:52:41.557Z"
+    },
+    {
+      "id": "580ce743-84f0-4181-8212-6d0735850d66",
+      "nome": "financas",
+      "temaPaiId": null,
+      "criadoEm": "2026-09-15T12:52:41.557Z"
+    },
+    {
+      "id": "66a3dc8b-0acc-491b-b118-0b752bd41b92",
+      "nome": "agenda",
+      "temaPaiId": null,
+      "criadoEm": "2026-09-15T12:52:41.557Z"
+    },
+    {
+      "id": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "nome": "Projetos",
+      "temaPaiId": null,
+      "criadoEm": "2026-09-15T13:07:58.219Z"
+    },
+    {
+      "id": "ddb4ccbd-eedf-4bcc-bb94-361dbdc0e82e",
+      "nome": "InfiniteScape RPGAI",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:13:00.145Z"
+    },
+    {
+      "id": "56ad4226-9eda-4fb8-afa1-40e32ae763ab",
+      "nome": "Everything Box",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:07:58.226Z"
+    },
+    {
+      "id": "be56cd34-98a8-4c2d-80e5-b509c2bf6a27",
+      "nome": "CV-Builder",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:07:58.223Z"
+    },
+    {
+      "id": "3d1104bd-1cb3-460a-9b58-0190c3baf71f",
+      "nome": "Crimson-Painting-Store",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:07:58.224Z"
+    },
+    {
+      "id": "5213d5b3-c4ac-4ad4-9ebd-87e19a699fdb",
+      "nome": "Hub Pessoal",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:13:05.241Z"
+    },
+    {
+      "id": "d5a60f2e-09f7-43c1-92bd-d3643d90dfa8",
+      "nome": "PedroFaria-CV",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:07:58.221Z"
+    },
+    {
+      "id": "61cd1a30-a766-44dc-b677-ae3cfad204ef",
+      "nome": "JoaoFaria-CV",
+      "temaPaiId": "a9af2c92-acc7-4e3e-a6f2-b46c48915fd1",
+      "criadoEm": "2026-09-15T13:07:58.227Z"
+    }
+  ]
+}
