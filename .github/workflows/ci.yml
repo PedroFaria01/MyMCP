@@ -14,7 +14,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # jsdom (usado nos testes de componente) exige Node ^22.22.2 || ^24.15.0 || >=26 —
+          # Node 20 não entra nesse range, por isso os testes falhavam no CI
+          node-version: 24
           cache: npm
 
       - run: npm ci
